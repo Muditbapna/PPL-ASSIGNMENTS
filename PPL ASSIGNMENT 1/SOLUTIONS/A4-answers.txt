@@ -1,0 +1,20 @@
+ 1  How is array declaration and initialization handled?
+
+Ans-Arrays  are declared in a single statement with no initialisation and required
+    size. Initialisation takes place one element per statement .
+
+
+
+2.  Why does the statement a[i] = b[i] get broken down to two steps with
+    an intermediate temporary?
+
+Ans- Because  only one memory operation per instruction is permitted. Read
+    and write cannot be performed simultaneously as array access includes calculation
+    of memory address. 
+
+
+3.   Why are cobblers used?
+
+Ans-As arrays are traversed by calculation of subsquent memory location and accesing
+    the datatype at that locations. Hence in order to mark the end of scope of these arrays
+   ,gimple uses COBBLER statements

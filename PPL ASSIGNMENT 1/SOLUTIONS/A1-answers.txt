@@ -1,0 +1,44 @@
+ 1   How  do the  declarations  look in  the  GIMPLE? Specifically,  what
+     happens to multiple  variables declared and initialized  on the same
+     line? What happens to global declaration [int Z]?
+
+Ans- In the gimple IR file of thw given code each declaration is made on a new line.
+     Multiple declarations given on the same line are converted to seperate declarations 
+     on new lines.The global variable is not declared along with other variables,instead
+     whenevwr it is required in an expression it,s value is stored in another temporary 
+     variable and later assigned to the global variable.
+
+
+
+2    How are complex  expressions such as [c  = a * b +  25] broken down?
+     Can you  determine a  rule as  to when  temporary variables  will be
+     introduced?
+
+Ans- The whole expression is broken down in terms. Then one term is evaluated and its value
+     is stored in a temporary variable.then further evaluation is done using the temporary
+     variable and finally the expression is stored back to the originally declared variable.The
+     rule for evaluation of expression seems to be that expressions are stored in temporary 
+     variable as compiler performs one action at a timr and then they are used for further 
+     evaluation and final value is stored back to the original variable.
+
+
+
+3    How are  floats/doubles represented in  GIMPLE? What happens  when a
+     float/double is assigned to an integer in [Z = r]?
+
+Ans- Floats and doubles are represented using scientific notation. The double data type is 
+     coverted to int and then it is assigned to z as z is an int data type
+     
+
+
+4    How  are reads/writes  to the  global variable  Z performed?  Why is
+     there a temporary introduced  for the statement [Z = Z  + 1] but not
+     for the statements [q = Z] or [Z = p]?
+
+Ans- Reads/writes to z performed through loads to/stores from locals. A temporary
+     is required for Z = Z + 1 because in gimple only one operation can be done in
+     one step so assignment and increment both cant be done in a single command hence temporay variables are used
+
+
+
+   
