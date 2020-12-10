@@ -40,7 +40,7 @@ class hexagon(polygon):
 
 class octagon(polygon):
     def show(self):
-        for i in range(6):
+        for i in range(8):
            t.forward(self.length) 
            t.right(45)
 
